@@ -4,7 +4,6 @@ import { subcategoryPage } from "../page-objects/subcategory.page";
 import { shoppingCartPage } from "../page-objects/shopping-cart.page";
 import { compareItemsPage } from "../page-objects/compare-items.page";
 
-
 describe('Test Cases for Allo App', () => {
   
   beforeEach(() => {
@@ -94,7 +93,7 @@ describe('Test Cases for Allo App', () => {
       cy.log('Step 6: Verify that the item can be removed from the list.');
       compareItemsPage.removeFirstItem();
       itemsPage.gotoCompareItemsPage();
-      compareItemsPage.verifyNumberOfitemsLeft(data.NUMBER_OF_ITEMS_IN_COMPARISON_LIST);
+      compareItemsPage.verifyNumberOfItemsLeft(data.NUMBER_OF_ITEMS_IN_COMPARISON_LIST);
       compareItemsPage.verifyAbsenseOfItem(data.ITEM_TITLES_FOR_COMPARISON[0]);
     });
   })

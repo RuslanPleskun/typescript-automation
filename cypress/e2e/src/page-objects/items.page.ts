@@ -3,87 +3,87 @@ export class ItemsPage {
     return cy.get('[data-range-filter="price"] input');
   }
 
-  enterPriceFrom(price: number) {
+  enterPriceFrom(price: number): void {
     this.getPriceInputField().first().click();
     this.getPriceInputField().first().clear();
     this.getPriceInputField().first().type(price.toString());
   }
 
-  enterPriceTo(price: number) {
+  enterPriceTo(price: number): void {
     this.getPriceInputField().last().click();
     this.getPriceInputField().last().clear();
     this.getPriceInputField().last().type(price.toString());
   }
 
-  getBrand() {
+  getBrand(): Cypress.Chainable<JQuery> {
     return cy.get('.f-list.cropped a');
   }
 
-  selectBrand(brand: string) {
+  selectBrand(brand: string): void {
     this.getBrand().contains(brand).click();
   }
 
-  getAvailability() {
+  getAvailability(): Cypress.Chainable<JQuery> {
     return cy.get('[data-id="available_in_city"].f-check');
   }
 
-  selectAvailableInCityOption() {
+  selectAvailableInCityOption(): void {
     this.getAvailability().click();
   }
 
-  getShowItems() {
+  getShowItems(): Cypress.Chainable<JQuery> {
     return cy.get('[class="f-popup__message"]');
   }
 
-  showFilteredItems(popupName: string) {
+  showFilteredItems(popupName: string): void {
     this.getShowItems().contains(popupName).click();
   }
 
-  getPriceValue() {
+  getPriceValue(): Cypress.Chainable<JQuery> {
     return cy.get('.product-card__buy-box [class="v-pb"] .v-pb__cur');
   }
 
-  getShoppingCartSign() {
+  getShoppingCartSign(): Cypress.Chainable<JQuery> {
     return cy.get('.products-layout__item .v-btn--cart');
   }
 
-  addFirstShownItemToShoppingCart() {
+  addFirstShownItemToShoppingCart(): void {
     this.getShoppingCartSign().first().click();
   }
 
-  getComebackButton() {
+  getComebackButton(): Cypress.Chainable<JQuery> {
     return cy.get('.cart-popup__content .comeback');
   }
 
-  clickComebackButton() {
+  clickComebackButton(): void {
     this.getComebackButton().click();
   }
 
-  getCartButton() {
+  getCartButton(): Cypress.Chainable<JQuery> {
     return cy.get('.mh-cart button');
   }
 
-  getLogo() {
+  getLogo(): Cypress.Chainable<JQuery> {
     return cy.get('.mh__sr .v-logo');
   }
 
-  getItemTitle() {
+  getItemTitle(): Cypress.Chainable<JQuery> {
     return cy.get('.product-card__content');
   }
 
-  getAddToCompareIcon(itemName: string) {
+  getAddToCompareIcon(itemName: string): Cypress.Chainable<JQuery> {
     return cy.get(`[title="${itemName}"]`).siblings('.product-card__main').find('.compare svg');
   }
 
-  addItemToCompareList(itemName: string) {
+  addItemToCompareList(itemName: string): void {
     this.getAddToCompareIcon(itemName).click();
   }
 
-  getCompareItemButton() {
+  getCompareItemButton(): Cypress.Chainable<JQuery> {
     return cy.get('.mh-button.mh-compare');
   }
 
-  verifySearchedItems(textToBePresentOnItem: string) {
+  verifySearchedItems(textToBePresentOnItem: string): void {
     this.getItemTitle().each(($element) => {
       cy.wrap($element).should('contain.text', textToBePresentOnItem);
     });
@@ -96,7 +96,7 @@ export class ItemsPage {
    * @param {number} priceFrom - bottom price boundary
    * @param {number} priceTo - top price bundary
    */
-  verifyFilterCorrectness(priceFrom: number, priceTo: number) {
+  verifyFilterCorrectness(priceFrom: number, priceTo: number): void {
     cy.wait(1000);                                  // This delay is necessary here for page rendering
     this.getPriceValue().then(($elements) => {
       const pricesArray = $elements.map((index, element) => {
@@ -112,15 +112,15 @@ export class ItemsPage {
     });
   }
 
-  gotoMainPage() {
+  gotoMainPage(): void {
     this.getLogo().click();
   }
 
-  gotoShoppingCartPage() {
+  gotoShoppingCartPage(): void {
     this.getCartButton().click();
   }
 
-  gotoCompareItemsPage() {
+  gotoCompareItemsPage(): void {
     this.getCompareItemButton().click();
   }
 }

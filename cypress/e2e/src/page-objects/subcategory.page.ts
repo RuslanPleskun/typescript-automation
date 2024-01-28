@@ -1,18 +1,18 @@
 export class SubcategoryPage {
 
-  getPhonesSubcategory() {
+  getPhonesSubcategory(): Cypress.Chainable<JQuery> {
     return cy.get('.portal-group__section a');
   }
 
-  selectPhonesSubcategory() {
+  selectPhonesSubcategory(): void {
     this.getPhonesSubcategory().first().click();
   }
 
-  getSubcategory() {
+  getSubcategory(): Cypress.Chainable<JQuery> {
     return cy.get('.portal-group__title a');
   }
 
-  selectSubcategory(subcategory: string) {
+  selectSubcategory(subcategory: string): void {
     this.getSubcategory().contains(subcategory).click();
   }
 }

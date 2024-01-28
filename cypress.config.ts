@@ -1,4 +1,4 @@
-import { defineConfig } from "cypress";
+import { defineConfig } from 'cypress'
 
 export default defineConfig({
   viewportHeight: 1080,
@@ -23,8 +23,9 @@ export default defineConfig({
   e2e: {
     baseUrl: 'https://allo.ua/',
     experimentalModifyObstructiveThirdPartyCode: true,
-    setupNodeEvents(on, config) {
-      require('cypress-mochawesome-reporter/plugin')(on);
-    },
-  },
-});
+    setupNodeEvents (on, config) {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      require('cypress-mochawesome-reporter/plugin')(on)
+    }
+  }
+})

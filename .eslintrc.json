@@ -1,0 +1,25 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "ignorePatterns": ["cypress/report/assets/app.js"],
+    "extends": [
+      "standard-with-typescript",
+      "plugin:cypress/recommended",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+      "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "error",
+      "@typescript-eslint/no-unused-vars": "error",
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "@typescript-eslint/no-unnecessary-condition": "error",
+      "@typescript-eslint/naming-convention": "error",
+      "valid-jsdoc": ["error", { "prefer": { "return": "return" } }]
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "typescript-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "open": "cypress open",
+    "test": "cypress run --browser chrome --headed",
+    "e2e": "cypress run --browser chrome --spec 'cypress/e2e/**/*.ts'",
+    "cleanup": "rm -rf report && mkdir report",
+    "e2e_complete": "npm run cleanup && npm run e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuslanPleskun/typescript-automation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuslanPleskun/typescript-automation/issues"
+  },
+  "homepage": "https://github.com/RuslanPleskun/typescript-automation#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.9",
+    "cypress": "^13.6.3",
+    "cypress-mochawesome-reporter": "^3.8.1",
+    "typescript": "^5.3.3"
+  }
+}

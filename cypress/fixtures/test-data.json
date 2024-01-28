@@ -1,0 +1,19 @@
+{
+  "PHONES_CATEGORY": "Смартфони та телефони",
+  "LAPTOPS_CATEGORY": "Ноутбуки, ПК та планшети",
+  "LAPTOPS_SUBCATEGORY": "Ноутбуки",
+  "SHOW": "Показати",
+  "XIAOMI_BRAND": "Xiaomi",
+  "PHONE_FROM_PRICE": 5000,
+  "PHONE_TO_PRICE": 6000,
+  "XIAOMI_REDMI_NOTE": "Xiaomi Redmi Note 13 Pro 8/256 Midnight Black",
+  "XIAOMI_REDMI_BOOK": "Ноутбук Xiaomi RedmiBook Pro 14 R5/16G/512G/W11 (JYU4399CN)",
+  "IPHONE15_PRO_MAX": "iPhone 15 Pro Max 256GB",
+  "SINGLE_ITEM": 1,
+  "NUMBER_OF_ITEMS_IN_COMPARISON_LIST": 2,
+  "ITEM_TITLES_FOR_COMPARISON": [
+    "Samsung Galaxy A34 8/256 (SM-A346EZKESEK) BLACK",
+    "Apple iPhone 15 256GB Black (MTP63)",
+    "Samsung Galaxy S24 Ultra 12/1Tb Gray (SM-S928BZTPEUC)"
+  ]
+}

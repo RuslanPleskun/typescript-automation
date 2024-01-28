@@ -6,20 +6,24 @@
     "ignorePatterns": ["cypress/report/assets/app.js"],
     "extends": [
       "standard-with-typescript",
-      "plugin:cypress/recommended",
-      "eslint:recommended"
+      "plugin:cypress/recommended"
     ],
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "ethers": "readonly"
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
-      "no-shadow": "off",
-    "@typescript-eslint/no-shadow": "error",
-      "@typescript-eslint/no-unused-vars": "error",
-      "@typescript-eslint/explicit-module-boundary-types": "error",
-      "@typescript-eslint/no-unnecessary-condition": "error",
-      "@typescript-eslint/naming-convention": "error",
-      "valid-jsdoc": ["error", { "prefer": { "return": "return" } }]
+      "cypress/no-assigning-return-values": "error",
+      "cypress/no-unnecessary-waiting": "error",
+      "cypress/assertion-before-screenshot": "warn",
+      "cypress/no-force": "warn",
+      "cypress/no-async-tests": "error",
+      "cypress/no-pause": "error",
+      "@typescript-eslint/no-unsafe-argument": "off"
     }
 }

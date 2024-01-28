@@ -1,6 +1,6 @@
-
-
 ## Getting Started
+
+!!! The same tests as in https://github.com/RuslanPleskun/test-repo but with the usage of TypeScript as primary programming language instead of JavaScript
 
 1. Install NodeJS
     *Requirement: Node.js version 18 or higher*

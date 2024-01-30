@@ -6,7 +6,7 @@
     *Requirement: Node.js version 18 or higher*
 
 2. Create an empty folder, open terminal in that folder, clone repository with the following command and switch to that folder:
-`git clone https://github.com/RuslanPleskun/test-repo.git`
+`git clone https://github.com/RuslanPleskun/typescript-automation.git`
 
 2. Run `npm install` to install all the dependencies
 

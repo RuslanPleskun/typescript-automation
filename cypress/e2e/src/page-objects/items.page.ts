@@ -1,89 +1,89 @@
 export class ItemsPage {
-  getPriceInputField (): Cypress.Chainable<JQuery> {
+  private getPriceInputField ()  {
     return cy.get('[data-range-filter="price"] input')
   }
 
-  enterPriceFrom (price: number): void {
+  private getBrand () {
+    return cy.get('.f-list.cropped a')
+  }
+
+  private getAvailability () {
+    return cy.get('[data-id="available_in_city"].f-check')
+  }
+
+  private getShowItems () {
+    return cy.get('[class="f-popup__message"]')
+  }
+
+  private getPriceValue () {
+    return cy.get('.product-card__buy-box [class="v-pb"] .v-pb__cur')
+  }
+
+  private getShoppingCartSign () {
+    return cy.get('.products-layout__item .v-btn--cart')
+  }
+
+  private getComebackButton () {
+    return cy.get('.cart-popup__content .comeback')
+  }
+
+  private getCartButton () {
+    return cy.get('.mh-cart button')
+  }
+
+  private getLogo () {
+    return cy.get('.mh__sr .v-logo')
+  }
+
+  private getItemTitle () {
+    return cy.get('.product-card__content')
+  }
+
+  private getAddToCompareIcon (itemName: string) {
+    return cy.get(`[title="${itemName}"]`).siblings('.product-card__main').find('.compare svg')
+  }
+
+  private getCompareItemButton () {
+    return cy.get('.mh-button.mh-compare')
+  }
+
+  public enterPriceFrom (price: number) {
     this.getPriceInputField().first().click()
     this.getPriceInputField().first().clear()
     this.getPriceInputField().first().type(price.toString())
   }
 
-  enterPriceTo (price: number): void {
+  public enterPriceTo (price: number) {
     this.getPriceInputField().last().click()
     this.getPriceInputField().last().clear()
     this.getPriceInputField().last().type(price.toString())
   }
 
-  getBrand (): Cypress.Chainable<JQuery> {
-    return cy.get('.f-list.cropped a')
-  }
-
-  selectBrand (brand: string): void {
+  public selectBrand (brand: string) {
     this.getBrand().contains(brand).click()
   }
 
-  getAvailability (): Cypress.Chainable<JQuery> {
-    return cy.get('[data-id="available_in_city"].f-check')
-  }
-
-  selectAvailableInCityOption (): void {
+  public selectAvailableInCityOption () {
     this.getAvailability().click()
   }
 
-  getShowItems (): Cypress.Chainable<JQuery> {
-    return cy.get('[class="f-popup__message"]')
-  }
-
-  showFilteredItems (popupName: string): void {
+  public showFilteredItems (popupName: string) {
     this.getShowItems().contains(popupName).click()
   }
 
-  getPriceValue (): Cypress.Chainable<JQuery> {
-    return cy.get('.product-card__buy-box [class="v-pb"] .v-pb__cur')
-  }
-
-  getShoppingCartSign (): Cypress.Chainable<JQuery> {
-    return cy.get('.products-layout__item .v-btn--cart')
-  }
-
-  addFirstShownItemToShoppingCart (): void {
+  public addFirstShownItemToShoppingCart () {
     this.getShoppingCartSign().first().click()
   }
 
-  getComebackButton (): Cypress.Chainable<JQuery> {
-    return cy.get('.cart-popup__content .comeback')
-  }
-
-  clickComebackButton (): void {
+  public clickComebackButton () {
     this.getComebackButton().click()
   }
 
-  getCartButton (): Cypress.Chainable<JQuery> {
-    return cy.get('.mh-cart button')
-  }
-
-  getLogo (): Cypress.Chainable<JQuery> {
-    return cy.get('.mh__sr .v-logo')
-  }
-
-  getItemTitle (): Cypress.Chainable<JQuery> {
-    return cy.get('.product-card__content')
-  }
-
-  getAddToCompareIcon (itemName: string): Cypress.Chainable<JQuery> {
-    return cy.get(`[title="${itemName}"]`).siblings('.product-card__main').find('.compare svg')
-  }
-
-  addItemToCompareList (itemName: string): void {
+  public addItemToCompareList (itemName: string) {
     this.getAddToCompareIcon(itemName).click()
   }
 
-  getCompareItemButton (): Cypress.Chainable<JQuery> {
-    return cy.get('.mh-button.mh-compare')
-  }
-
-  verifySearchedItems (textToBePresentOnItem: string): void {
+  public verifySearchedItems (textToBePresentOnItem: string) {
     this.getItemTitle().each(($element) => {
       cy.wrap($element).should('contain.text', textToBePresentOnItem)
     })
@@ -96,7 +96,7 @@ export class ItemsPage {
    * @param {number} priceFrom - bottom price boundary
    * @param {number} priceTo - top price bundary
    */
-  verifyFilterCorrectness (priceFrom: number, priceTo: number): void {
+  public verifyFilterCorrectness (priceFrom: number, priceTo: number) {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000) // This delay is necessary here for page rendering
     this.getPriceValue().then(($elements) => {
@@ -114,17 +114,17 @@ export class ItemsPage {
     })
   }
 
-  gotoMainPage (): void {
+  public gotoMainPage () {
     this.getLogo().click()
   }
 
-  gotoShoppingCartPage (): void {
+  public gotoShoppingCartPage () {
     this.getCartButton().click()
   }
 
-  gotoCompareItemsPage (): void {
+  public gotoCompareItemsPage () {
     this.getCompareItemButton().click()
   }
 }
 
-export const itemsPage = new ItemsPage()
+export const itemsPage: ItemsPage = new ItemsPage()

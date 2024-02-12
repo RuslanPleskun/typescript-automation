@@ -24,7 +24,6 @@ export default defineConfig({
     baseUrl: 'https://allo.ua/',
     experimentalModifyObstructiveThirdPartyCode: true,
     setupNodeEvents (on, config) {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
       require('cypress-mochawesome-reporter/plugin')(on)
     }
   }

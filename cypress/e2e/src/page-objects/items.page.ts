@@ -1,41 +1,41 @@
 export class ItemsPage {
-  private getPriceInputField ()  {
+  private get priceInputField ()  {
     return cy.get('[data-range-filter="price"] input')
   }
 
-  private getBrand () {
+  private get brand () {
     return cy.get('.f-list.cropped a')
   }
 
-  private getAvailability () {
+  private get availability () {
     return cy.get('[data-id="available_in_city"].f-check')
   }
 
-  private getShowItems () {
+  private get showItems () {
     return cy.get('[class="f-popup__message"]')
   }
 
-  private getPriceValue () {
+  private get priceValue () {
     return cy.get('.product-card__buy-box [class="v-pb"] .v-pb__cur')
   }
 
-  private getShoppingCartSign () {
+  private get shoppingCartSign () {
     return cy.get('.products-layout__item .v-btn--cart')
   }
 
-  private getComebackButton () {
+  private get comebackButton () {
     return cy.get('.cart-popup__content .comeback')
   }
 
-  private getCartButton () {
+  private get cartButton () {
     return cy.get('.mh-cart button')
   }
 
-  private getLogo () {
+  private get logo () {
     return cy.get('.mh__sr .v-logo')
   }
 
-  private getItemTitle () {
+  private get itemTitle () {
     return cy.get('.product-card__content')
   }
 
@@ -43,40 +43,40 @@ export class ItemsPage {
     return cy.get(`[title="${itemName}"]`).siblings('.product-card__main').find('.compare svg')
   }
 
-  private getCompareItemButton () {
+  private get compareItemButton () {
     return cy.get('.mh-button.mh-compare')
   }
 
   public enterPriceFrom (price: number) {
-    this.getPriceInputField().first().click()
-    this.getPriceInputField().first().clear()
-    this.getPriceInputField().first().type(price.toString())
+    this.priceInputField.first().click()
+    this.priceInputField.first().clear()
+    this.priceInputField.first().type(price.toString())
   }
 
   public enterPriceTo (price: number) {
-    this.getPriceInputField().last().click()
-    this.getPriceInputField().last().clear()
-    this.getPriceInputField().last().type(price.toString())
+    this.priceInputField.last().click()
+    this.priceInputField.last().clear()
+    this.priceInputField.last().type(price.toString())
   }
 
   public selectBrand (brand: string) {
-    this.getBrand().contains(brand).click()
+    this.brand.contains(brand).click()
   }
 
   public selectAvailableInCityOption () {
-    this.getAvailability().click()
+    this.availability.click()
   }
 
   public showFilteredItems (popupName: string) {
-    this.getShowItems().contains(popupName).click()
+    this.showItems.contains(popupName).click()
   }
 
   public addFirstShownItemToShoppingCart () {
-    this.getShoppingCartSign().first().click()
+    this.shoppingCartSign.first().click()
   }
 
   public clickComebackButton () {
-    this.getComebackButton().click()
+    this.comebackButton.click()
   }
 
   public addItemToCompareList (itemName: string) {
@@ -84,7 +84,7 @@ export class ItemsPage {
   }
 
   public verifySearchedItems (textToBePresentOnItem: string) {
-    this.getItemTitle().each(($element) => {
+    this.itemTitle.each(($element) => {
       cy.wrap($element).should('contain.text', textToBePresentOnItem)
     })
   }
@@ -99,7 +99,7 @@ export class ItemsPage {
   public verifyFilterCorrectness (priceFrom: number, priceTo: number) {
     // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.wait(1000) // This delay is necessary here for page rendering
-    this.getPriceValue().then(($elements) => {
+    this.priceValue.then(($elements) => {
       const pricesArray = $elements.map((index, element) => {
         const priceText = Cypress.$(element).text()
         const price = priceText.replace(/[^0-9.]/g, '').trim()
@@ -115,15 +115,15 @@ export class ItemsPage {
   }
 
   public gotoMainPage () {
-    this.getLogo().click()
+    this.logo.click()
   }
 
   public gotoShoppingCartPage () {
-    this.getCartButton().click()
+    this.cartButton.click()
   }
 
   public gotoCompareItemsPage () {
-    this.getCompareItemButton().click()
+    this.compareItemButton.click()
   }
 }
 

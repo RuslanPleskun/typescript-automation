@@ -1,44 +1,44 @@
 export class MainPage {
-  getCategory (): Cypress.Chainable<JQuery> {
+  private get category () {
     return cy.get('#js-menu-wrapper a')
   }
 
-  selectCategory (category: string): void {
-    this.getCategory().contains(category).click()
+  public selectCategory (category: string) {
+    this.category.contains(category).click()
   }
 
-  getPriceInputField (): Cypress.Chainable<JQuery> {
+  private get priceInputField () {
     return cy.get('[data-range-filter="price"] input')
   }
 
-  enterPriceFrom (price: number): void {
-    this.getPriceInputField().first().click()
-    this.getPriceInputField().first().clear()
-    this.getPriceInputField().first().type(price.toString())
-  }
-
-  enterPriceTo (price: number): void {
-    this.getPriceInputField().last().click()
-    this.getPriceInputField().last().clear()
-    this.getPriceInputField().last().type(price.toString())
-  }
-
-  getSearchField (): Cypress.Chainable<JQuery> {
+  private get searchField () {
     return cy.get('#search-form__input')
   }
 
-  searchItem (itemName: string): void {
-    this.getSearchField().click()
-    this.getSearchField().clear()
-    this.getSearchField().type(itemName).type('{enter}')
-  }
-
-  getCompareButton (): Cypress.Chainable<JQuery> {
+  private get compareButton () {
     return cy.get('.mh-button.mh-compare')
   }
 
-  verifyThatCompareButtonIsDisabled (): void {
-    this.getCompareButton().should('have.class', 'disabled')
+  public enterPriceFrom (price: number) {
+    this.priceInputField.first().click()
+    this.priceInputField.first().clear()
+    this.priceInputField.first().type(price.toString())
+  }
+
+  public enterPriceTo (price: number) {
+    this.priceInputField.last().click()
+    this.priceInputField.last().clear()
+    this.priceInputField.last().type(price.toString())
+  }
+
+  public searchItem (itemName: string) {
+    this.searchField.click()
+    this.searchField.clear()
+    this.searchField.type(itemName).type('{enter}')
+  }
+
+  public verifyThatCompareButtonIsDisabled () {
+    this.compareButton.should('have.class', 'disabled')
   }
 }
 

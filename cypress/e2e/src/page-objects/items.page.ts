@@ -72,11 +72,11 @@ export class ItemsPage {
   }
 
   public addFirstShownItemToShoppingCart () {
-    this.shoppingCartSign.first().click()
+    this.shoppingCartSign.first().click({ force: true })
   }
 
   public clickComebackButton () {
-    this.comebackButton.click()
+    this.comebackButton.click({ timeout: 7000 })
   }
 
   public addItemToCompareList (itemName: string) {
